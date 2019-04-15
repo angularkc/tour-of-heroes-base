@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Observable } from 'rxjs/Observable';
-import { Subject }    from 'rxjs/Subject';
-import { of }         from 'rxjs/observable/of';
+import { Observable, Subject } from 'rxjs';
 
 import {
    debounceTime, distinctUntilChanged, switchMap
@@ -37,6 +35,6 @@ export class HeroSearchComponent implements OnInit {
 
       // switch to new search observable each time the term changes
       switchMap((term: string) => this.heroService.searchHeroes(term)),
-    );
+    ) as Observable<Hero[]>;
   }
 }
